@@ -6,16 +6,17 @@
 #    By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 20:30:36 by rkaufman          #+#    #+#              #
-#    Updated: 2022/05/21 10:18:53 by rkaufman         ###   ########.fr        #
+#    Updated: 2022/05/21 10:43:56 by rkaufman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	Bureaucrat
+NAME		:=	Form
 
 CC			:=	c++
 
 SRCS		:=	main.cpp \
-				Bureaucrat.cpp
+				Bureaucrat.cpp \
+				Form.cpp
 
 OBJS		:=	$(SRCS:%.cpp=%.o)
 

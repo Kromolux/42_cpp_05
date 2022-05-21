@@ -6,7 +6,7 @@
 /*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:30:04 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 11:03:47 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/21 11:22:04 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 # include <iostream>
+# include "Form.hpp"
 # include "colors.h"
+
+class Form;
 
 class Bureaucrat
 {
@@ -32,6 +35,9 @@ class Bureaucrat
 		void				incrementGrade(void);
 		void				decrementGrade(void);
 
+		void				signForm(Form & form) const;
+		void				signForm(Form * form) const;
+	
 		class GradeTooHighException : public std::exception
 		{
 			public:

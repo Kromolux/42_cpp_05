@@ -6,7 +6,7 @@
 /*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:30:07 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 10:53:50 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/21 11:16:57 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,25 @@ void	Bureaucrat::decrementGrade(void)
 	if (this->_grade == this->_MINGRADE)
 		throw GradeTooLowException();
 	this->_grade++;
+}
+
+
+void	Bureaucrat::signForm(Form & form) const
+{
+	signForm(&form);
+}
+
+void	Bureaucrat::signForm(Form * form) const
+{
+	try
+	{
+		form->beSigned(*this);
+		std::cout << COLOR_GREEN << this->_name << " signed " << form->getName() << "\n" << COLOR_DEFAULT;
+	}
+	catch (std::exception & error)
+	{
+		std::cout << COLOR_RED << this->_name << " couldn't sign " << form->getName() << " because " << error.what() << "\n" <<COLOR_DEFAULT;
+	}
 }
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & input)

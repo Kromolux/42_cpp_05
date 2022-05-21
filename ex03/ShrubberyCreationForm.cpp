@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rkaufman <rkaufman@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:11:49 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 19:36:40 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/21 22:01:14 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ std::string const & ShrubberyCreationForm::getFormType(void) const
 
 void	ShrubberyCreationForm::validExecution(Bureaucrat const & executor) const
 {
-	std::ofstream	output_file(this->getName() + "_shrubbery");
+	std::string	const filename = (this->getName() + "_shrubbery");
+	std::ofstream	output_file(filename.c_str());
 	if (!output_file.is_open())
 		throw CantAccessFileException();
 	output_file << "               ,@@@@@@@,\n";

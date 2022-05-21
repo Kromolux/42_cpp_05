@@ -6,7 +6,7 @@
 /*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:34:23 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 10:28:37 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:25:41 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	try_catch(void (*f)(void));
 static void	test_constructor(void);
 static void	test_increment(void);
 static void	test_decrement(void);
+static void	print_text(std::string output);
 
 int	main(void)
 {
@@ -39,6 +40,11 @@ static void	try_catch(void (*f)(void))
 	}
 }
 
+static void	print_text(std::string output)
+{
+	std::cout << COLOR_YELLOW << "\n" << output << "\n\n" << COLOR_DEFAULT;
+}
+
 //*************************************************************************************
 static void	invalid_constructor_test0(void);
 static void	invalid_constructor_test1(void);
@@ -49,30 +55,30 @@ static void	invalid_constructor_test5(void);
 
 static void	test_constructor(void)
 {
-	std::cout << COLOR_YELLOW << "\n===(BASIC CONSTRUCTOR TESTS)===\n\n" << COLOR_DEFAULT;
+	print_text("===(BASIC CONSTRUCTOR TESTS)===");
 	
 	{
-		std::cout << "\n--> create valid bureaucrats\n";
+		print_text("\n--> create valid bureaucrats");
 		
 		Bureaucrat	person1("Otto", 47);
 		std::cout << person1 << std::endl;
 		Bureaucrat	*person2 = new Bureaucrat("Ralf", 29);
 		std::cout << person2 << std::endl;
 
-		std::cout << "\n--> copy valid bureaucrats\n";
+		print_text("--> copy valid bureaucrats");
 
 		Bureaucrat person3(person1);
 		std::cout << person3 << std::endl;
 		Bureaucrat *person4 = new Bureaucrat(*person2);
 		std::cout << person4 << std::endl;
 
-		std::cout << "\n--> deleting valid bureaucrats\n";
+		print_text("--> deleting valid bureaucrats");
 		
 		delete person2;
 		delete person4;
 	}
 	{
-		std::cout << "\n--> create invalid bureaucrats\n";
+		print_text("--> create invalid bureaucrats");
 		try_catch(&invalid_constructor_test0);
 		try_catch(&invalid_constructor_test1);
 		try_catch(&invalid_constructor_test2);
@@ -118,17 +124,17 @@ static void	invalid_increment_test0(void);
 
 static void	test_increment(void)
 {
-	std::cout << COLOR_YELLOW << "\n===(INCREMENT GRADE TESTS)===\n\n" << COLOR_DEFAULT;
+	print_text("\n===(INCREMENT GRADE TESTS)===");
 	
 	{
-		std::cout << "\n--> create valid bureaucrats\n";
+		print_text("--> create valid bureaucrats");
 		
 		Bureaucrat	person1("Otto", 47);
 		std::cout << person1 << std::endl;
 		Bureaucrat	*person2 = new Bureaucrat("Ralf", 29);
 		std::cout << person2 << std::endl;
 
-		std::cout << "\n--> increment bureaucrat grades valid\n";
+		print_text("--> increment bureaucrat grades valid");
 		person1.incrementGrade();
 		std::cout << person1 << std::endl;
 		person1.incrementGrade();
@@ -139,12 +145,12 @@ static void	test_increment(void)
 		person2->incrementGrade();
 		std::cout << person2 << std::endl;
 		
-		std::cout << "\n--> deleting valid bureaucrats\n";
+		print_text("--> deleting valid bureaucrats");
 
 		delete person2;
 	}
 	{
-		std::cout << "\n--> increment bureaucrat grades invalid\n";
+		print_text("--> increment bureaucrat grades invalid");
 		try_catch(&invalid_increment_test0);
 	}
 }
@@ -162,17 +168,17 @@ static void	invalid_decrement_test0(void);
 
 static void	test_decrement(void)
 {
-	std::cout << COLOR_YELLOW << "\n===(DECREMENT GRADE TESTS)===\n\n" << COLOR_DEFAULT;
+	print_text("===(DECREMENT GRADE TESTS)===");
 	
 	{
-		std::cout << "\n--> create valid bureaucrats\n";
+		print_text("--> create valid bureaucrats");
 		
 		Bureaucrat	person1("Otto", 47);
 		std::cout << person1 << std::endl;
 		Bureaucrat	*person2 = new Bureaucrat("Ralf", 29);
 		std::cout << person2 << std::endl;
 
-		std::cout << "\n--> decrement bureaucrat grades valid\n";
+		print_text("--> decrement bureaucrat grades valid");
 		person1.decrementGrade();
 		std::cout << person1 << std::endl;
 		person1.decrementGrade();
@@ -183,12 +189,12 @@ static void	test_decrement(void)
 		person2->decrementGrade();
 		std::cout << person2 << std::endl;
 		
-		std::cout << "\n--> deleting valid bureaucrats\n";
+		print_text("--> deleting valid bureaucrats");
 
 		delete person2;
 	}
 	{
-		std::cout << "\n--> decrement bureaucrat grades invalid\n";
+		print_text("--> decrement bureaucrat grades invalid");
 		try_catch(&invalid_decrement_test0);
 	}
 }

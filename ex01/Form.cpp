@@ -6,7 +6,7 @@
 /*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 10:45:27 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 11:23:29 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/21 14:48:04 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ Form::Form(Form const & input) : _name(input._name + "_copy"), _GradeToSign(inpu
 		std::cout << COLOR_ORANGE << "[Form] copy constructor called " << input._name << " " << input._GradeToSign << " " << input._GradeToExec << std::endl << COLOR_DEFAULT;
 
 	*this = input;
+}
+
+Form::Form(Form const * input) : _name(input->_name + "_copy"), _GradeToSign(input->_GradeToSign), _GradeToExec(input->_GradeToExec)
+{
+	if (DEBUG)
+		std::cout << COLOR_ORANGE << "[Form] copy constructor called " << input->_name << " " << input->_GradeToSign << " " << input->_GradeToExec << std::endl << COLOR_DEFAULT;
+
+	*this = *input;
 }
 
 Form const & Form::operator=(Form const & input)
@@ -78,6 +86,8 @@ void	Form::beSigned(Bureaucrat const & input)
 
 void	Form::beSigned(Bureaucrat const * input)
 {
+	if (this->_isSigned)
+		throw FormAlreadySignedException();
 	if (input->getGrade() <= this->_GradeToSign)
 		this->_isSigned = true;
 	else
@@ -94,7 +104,7 @@ std::ostream & operator<<(std::ostream & o, Form const & input)
 
 std::ostream & operator<<(std::ostream & o, Form const * input)
 {
-	o	<< input->getName() << ", Form status: " << (input->getIsSigned() ? "signed" : "unsigned") << " grade to sign: "
-		<< input->getGradeToSign() << " grade to execute: " << input->getGradeToExec();
+	o	<< input->getName() << ", Form status: " << (input->getIsSigned() ? "signed" : "unsigned") << " - grade to sign: "
+		<< input->getGradeToSign() << " - grade to execute: " << input->getGradeToExec();
 	return (o);
 }

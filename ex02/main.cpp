@@ -6,12 +6,14 @@
 /*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:34:23 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 18:42:19 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/21 20:03:30 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include <iostream>
 #include <limits.h>
 
@@ -58,20 +60,15 @@ static void	test_constructor(void)
 		std::cout << form1 << std::endl;
 		ShrubberyCreationForm	*form2 = new ShrubberyCreationForm("Park");
 		std::cout << form2 << std::endl;
-
-		print_text("--> copy valid forms");
-
-		ShrubberyCreationForm	*form3 = new ShrubberyCreationForm(form1);
+		RobotomyRequestForm		form3("Miningstation");
 		std::cout << form3 << std::endl;
-		ShrubberyCreationForm	*form4 = new ShrubberyCreationForm(form2);
+		PresidentialPardonForm	form4("Seth");
 		std::cout << form4 << std::endl;
 
 		print_text("--> deleting valid forms");
 
 		delete form1;
 		delete form2;
-		delete form3;
-		delete form4;
 	}
 }
 
@@ -91,19 +88,16 @@ static void	test_sign(void)
 		std::cout << form1 << std::endl;
 		ShrubberyCreationForm	*form2 = new ShrubberyCreationForm("Park");
 		std::cout << form2 << std::endl;
-
-		print_text("--> copy valid forms");
-
-		ShrubberyCreationForm	*form3 = new ShrubberyCreationForm(form1);
+		RobotomyRequestForm		form3("Miningstation");
 		std::cout << form3 << std::endl;
-		ShrubberyCreationForm	*form4 = new ShrubberyCreationForm(form2);
+		PresidentialPardonForm	form4("Seth");
 		std::cout << form4 << std::endl;
-
+	
 		print_text("--> create valid bureaucrats");
 		
 		Bureaucrat	person1("Otto", 47);
 		std::cout << person1 << std::endl;
-		Bureaucrat	*person2 = new Bureaucrat("Ralf", 29);
+		Bureaucrat	*person2 = new Bureaucrat("Ralf", 25);
 		std::cout << person2 << std::endl;
 
 		print_text("--> copy valid bureaucrats");
@@ -126,13 +120,7 @@ static void	test_sign(void)
 
 		person4->signForm(form4);
 		std::cout << form4 << std::endl;
-		/*
-		person1.signForm(form6);
-		std::cout << form6 << std::endl;
 
-		person4->signForm(form5);
-		std::cout << form5 << std::endl;
-		*/
 		print_text("--> deleting valid bureaucrats");
 		
 		delete person2;
@@ -142,8 +130,6 @@ static void	test_sign(void)
 
 		delete form1;
 		delete form2;
-		delete form3;
-		delete form4;
 	}
 	{
 		print_text("--> invalid sign Forms");
@@ -164,7 +150,7 @@ static void	invalid_sign_test0(void)
 }
 static void	invalid_sign_test1(void)
 {
-	AForm	*form2 = new ShrubberyCreationForm("Park");
+	AForm	*form2 = new RobotomyRequestForm("Miningstation");
 	std::cout << form2 << std::endl;
 	Bureaucrat	*person2 = new Bureaucrat("Ralf", 146);
 	std::cout << person2 << std::endl;
@@ -174,7 +160,7 @@ static void	invalid_sign_test1(void)
 }
 static void	invalid_sign_test2(void)
 {
-	AForm	*form3 = new ShrubberyCreationForm("Garden");
+	AForm	*form3 = new PresidentialPardonForm("Seth");
 	std::cout << form3 << std::endl;
 	Bureaucrat	person1("Peter", 55);
 	std::cout << person1 << std::endl;
@@ -198,19 +184,16 @@ static void	test_execution(void)
 		std::cout << form1 << std::endl;
 		ShrubberyCreationForm	*form2 = new ShrubberyCreationForm("Park");
 		std::cout << form2 << std::endl;
-
-		print_text("--> copy valid forms");
-
-		ShrubberyCreationForm	*form3 = new ShrubberyCreationForm(form1);
+		RobotomyRequestForm		form3("Miningstation");
 		std::cout << form3 << std::endl;
-		ShrubberyCreationForm	*form4 = new ShrubberyCreationForm(form2);
+		PresidentialPardonForm	form4("Seth");
 		std::cout << form4 << std::endl;
-
+	
 		print_text("--> create valid bureaucrats");
 		
-		Bureaucrat	person1("Otto", 47);
+		Bureaucrat	person1("Otto", 5);
 		std::cout << person1 << std::endl;
-		Bureaucrat	*person2 = new Bureaucrat("Ralf", 29);
+		Bureaucrat	*person2 = new Bureaucrat("Ralf", 5);
 		std::cout << person2 << std::endl;
 
 		print_text("--> copy valid bureaucrats");
@@ -234,11 +217,11 @@ static void	test_execution(void)
 		person4->signForm(form4);
 		std::cout << form4 << std::endl;
 
-		
 		print_text("--> executing valid forms");
 
 		person1.executeForm(form1);
-		form2->execute(person2);
+		form4.execute(person2);
+		person3.executeForm(form3);
 		print_text("--> deleting valid bureaucrats");
 		
 		delete person2;
@@ -248,8 +231,6 @@ static void	test_execution(void)
 
 		delete form1;
 		delete form2;
-		delete form3;
-		delete form4;
 	}
 	{
 		print_text("--> invalid execution Forms");
@@ -272,9 +253,9 @@ static void	invalid_exec_test0(void)
 }
 static void	invalid_exec_test1(void)
 {
-	AForm	*form2 = new ShrubberyCreationForm("Park");
+	AForm	*form2 = new RobotomyRequestForm("Park");
 	std::cout << form2 << std::endl;
-	Bureaucrat	*person2 = new Bureaucrat("Ralf", 142);
+	Bureaucrat	*person2 = new Bureaucrat("Ralf", 46);
 	std::cout << person2 << std::endl;
 	form2->execute(person2);
 	person2->signForm(form2);
@@ -284,11 +265,11 @@ static void	invalid_exec_test1(void)
 }
 static void	invalid_exec_test2(void)
 {
-	AForm	*form3 = new ShrubberyCreationForm("Garden");
+	AForm	*form3 = new PresidentialPardonForm("Seth");
 	std::cout << form3 << std::endl;
-	Bureaucrat	person1("Peter", 55);
+	Bureaucrat	person1("Peter", 25);
 	std::cout << person1 << std::endl;
 	person1.signForm(form3);
-	person1.signForm(form3);
+	person1.executeForm(form3);
 	delete form3;
 }

@@ -6,11 +6,11 @@
 #    By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/20 20:30:36 by rkaufman          #+#    #+#              #
-#    Updated: 2022/05/21 20:12:32 by rkaufman         ###   ########.fr        #
+#    Updated: 2022/05/21 21:02:08 by rkaufman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	MoreForms
+NAME		:=	WeHaveInterns
 
 CC			:=	c++
 
@@ -19,7 +19,8 @@ SRCS		:=	main.cpp \
 				AForm.cpp \
 				ShrubberyCreationForm.cpp \
 				RobotomyRequestForm.cpp \
-				PresidentialPardonForm.cpp
+				PresidentialPardonForm.cpp \
+				Intern.cpp
 
 OBJS		:=	$(SRCS:%.cpp=%.o)
 

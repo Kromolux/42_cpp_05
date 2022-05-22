@@ -6,7 +6,7 @@
 /*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:34:23 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 16:19:02 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/22 06:43:36 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,9 +236,11 @@ static void	test_sign(void)
 	}
 	{
 		print_text("--> invalid sign Forms");
-		
+		print_text("--> Test 0");
 		try_catch(&invalid_sign_test0);
+		print_text("--> Test 1");
 		try_catch(&invalid_sign_test1);
+		print_text("--> Test 2");
 		try_catch(&invalid_sign_test2);
 	}
 }

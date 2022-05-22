@@ -6,7 +6,7 @@
 /*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 19:26:04 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 19:53:00 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/22 06:54:16 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,14 @@ std::string const & RobotomyRequestForm::getFormType(void) const
 void	RobotomyRequestForm::validExecution(Bureaucrat const & executor) const
 {
 	srand(time(NULL));
-	std::cout << "ddrrrr bbrrrzzz rzzddr brrddzzzs\n";
-	std::cout << this->getName();
+	std::cout << "ddrrrr bbrrrzzz rzzddr brrddzzzs ggrrrrrrr  zzz fffssss\n";
 	if (rand() % 2 == 1)
 	{
-		std::cout << " has been robotomized successfully!\n";
+		std::cout << COLOR_GREEN << this->getName() << " has been robotomized successfully!\n";
 	}
 	else
 	{
-		std::cout << " attempt to robotomize failed!\n";
+		std::cout << COLOR_RED << this->getName() << " attempt to beeing robotomize failed!\n";
 	}
-	std::cout << executor.getName() << " executed " << this->getName() << " " << this->_FormType << "\n";
+	std::cout << COLOR_GREEN << executor.getName() << " executed " << this->getName() << " " << this->_FormType << "\n" << COLOR_DEFAULT;
 }

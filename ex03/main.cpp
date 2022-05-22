@@ -6,7 +6,7 @@
 /*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:34:23 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 20:57:15 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/22 06:49:15 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,19 @@ static void	test_constructor(void)
 		person1.signForm(form1);
 		person1.signForm(form2);
 		person1.signForm(form3);
+		
+		print_text("--> invalid sign forms");
 		person1.signForm(form4);
 	
 		print_text("--> executing valid forms");
-
+		print_text("--> Test 0");
 		person1.executeForm(form1);
+		print_text("--> Test 1");
 		person1.executeForm(form2);
+		print_text("--> Test 2");
 		person1.executeForm(form3);
+	
+		print_text("--> executing invalid form");
 		person1.executeForm(form4);
 	
 		print_text("--> deleting valid forms");

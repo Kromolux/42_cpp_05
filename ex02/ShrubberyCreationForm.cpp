@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkaufman <rkaufman@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:11:49 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 21:59:33 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/22 06:52:13 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ShrubberyCreationForm::validExecution(Bureaucrat const & executor) const
 {
 	std::string	const filename = (this->getName() + "_shrubbery");
 	std::ofstream	output_file(filename.c_str());
+
 	if (!output_file.is_open())
 		throw CantAccessFileException();
 	output_file << "               ,@@@@@@@,\n";
@@ -62,5 +63,5 @@ void	ShrubberyCreationForm::validExecution(Bureaucrat const & executor) const
 	output_file << "       |.|        | |         | |\n";
 	output_file << "     \\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_\n";
 	output_file.close();
-	std::cout << executor.getName() << " executed " << this->getName() << " " << this->_FormType << "\n";
+	std::cout << COLOR_GREEN << executor.getName() << " executed " << this->getName() << " " << this->_FormType << "\n" << COLOR_DEFAULT;
 }

@@ -6,7 +6,7 @@
 /*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 19:29:17 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 19:41:21 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/22 06:52:51 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ std::string const & PresidentialPardonForm::getFormType(void) const
 
 void	PresidentialPardonForm::validExecution(Bureaucrat const & executor) const
 {
-	std::cout << this->getName() << " has been pardoned by Zaphod Beeblebrox\n";
-	std::cout << executor.getName() << " executed " << this->getName() << " " << this->_FormType << "\n";
+	std::cout << COLOR_GREEN << this->getName() << " has been pardoned by Zaphod Beeblebrox\n";
+	std::cout << executor.getName() << " executed " << this->getName() << " " << this->_FormType << "\n" << COLOR_DEFAULT;
 }
 

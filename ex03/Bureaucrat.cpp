@@ -6,7 +6,7 @@
 /*   By: rkaufman <rkaufman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 20:30:07 by rkaufman          #+#    #+#             */
-/*   Updated: 2022/05/21 20:56:46 by rkaufman         ###   ########.fr       */
+/*   Updated: 2022/05/22 06:48:59 by rkaufman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ void	Bureaucrat::signForm(AForm & form) const
 void	Bureaucrat::signForm(AForm * form) const
 {
 	if (!form)
+	{
+		std::cout << COLOR_RED << this->_name << " tried to sign form, but no form was provided!\n" << COLOR_DEFAULT;
 		return ;
+	}
 	try
 	{
 		form->beSigned(*this);
@@ -107,7 +110,10 @@ void	Bureaucrat::executeForm(AForm const & form) const
 void	Bureaucrat::executeForm(AForm const * form) const
 {
 	if (!form)
+	{
+		std::cout << COLOR_RED << this->_name << " tried to execute form, but no form was provided!\n" << COLOR_DEFAULT;
 		return ;
+	}
 	try
 	{
 		form->executeFromBureaucrat(*this);
